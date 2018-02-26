@@ -11,7 +11,7 @@ public class Fernando: MonoBehaviour
     SpriteRenderer sr;
     public Camera cam;
     private float speed = 5f;
-    private float jumpForce = 300f;
+    private float jumpForce = 350f;
     private bool facingRight = true;
     Animator anim;
 

@@ -5,24 +5,29 @@ using UnityEngine;
 public class Enemigo : MonoBehaviour {
 
     private Rigidbody2D rb;
-    private SpriteRenderer sr;
-    private Vector3 direction;
+
+    // Parte de abajo del personaje
+    public GameObject side;
+    // Layer del mundo
+    public LayerMask layerMask;
 
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
-        sr = GetComponent<SpriteRenderer>();
-        direction = new Vector3(1, 0, 0);
     }
 
     // Update is called once per frame
     void Update() {
-        rb.transform.Translate(direction * 2 * Time.deltaTime);
+        RaycastHit2D raycast = Physics2D.Raycast(side.transform.position, Vector2.right, 0.000001f, layerMask);
+        //Si detecta un choque
+        if (raycast.collider != null)    
+        {
+            rb.transform.Rotate(new Vector3(0, 180, 0));
+            //side.transform.Rotate(new Vector3(0, 180, 0));
+        }
+        rb.transform.Translate(new Vector3(1, 0, 0) * 2 * Time.deltaTime);
+      
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    { 
-       direction.x = direction.x * -1;
-    }
 }
