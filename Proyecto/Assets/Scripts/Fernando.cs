@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Fernando: MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Fernando: MonoBehaviour
     SpriteRenderer sr;
     public Camera cam;
     private float speed = 5f;
-    private float jumpForce = 230f;
+    private float jumpForce = 300f;
     private bool facingRight = true;
     Animator anim;
 
@@ -21,6 +22,7 @@ public class Fernando: MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        rb2d.freezeRotation = true;
         sr = GetComponent<SpriteRenderer>();
         cam.transform.position = new Vector3(rb2d.transform.position.x, cam.transform.position.y, cam.transform.position.z);
         anim = GetComponent<Animator>();
@@ -30,6 +32,7 @@ public class Fernando: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //float move = CrossPlatformInputManager.GetAxis("Horizontal");}
         float move = Input.GetAxis("Horizontal");
         if (move != 0)
         {
@@ -38,16 +41,16 @@ public class Fernando: MonoBehaviour
             facingRight = move > 0;
         }
 
+        anim.SetFloat("Speed", Mathf.Abs(move));
         sr.flipX = !facingRight;
 
-        if (Input.GetButtonDown("Jump"))
+       //if (CrossPlatformInputManager.GetButtonDown("Jump"))
+       if(Input.GetButtonDown("Jump"))
         {
             rb2d.AddForce(Vector2.up * jumpForce);
-
-            anim.SetFloat("Speed", Mathf.Abs(move));
-
         }
-       
+
+        
 
     }
 }
