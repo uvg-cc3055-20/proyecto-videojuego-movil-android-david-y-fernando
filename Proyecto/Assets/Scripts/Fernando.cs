@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class Fernando: MonoBehaviour
@@ -15,7 +16,10 @@ public class Fernando: MonoBehaviour
     private bool facingRight = true;
     Animator anim;
 
-
+    // Parte de abajo del personaje
+    public GameObject feet;
+    // Layer del mundo
+    public LayerMask layerMask;
 
 
     // Use this for initialization
@@ -44,13 +48,29 @@ public class Fernando: MonoBehaviour
         anim.SetFloat("Speed", Mathf.Abs(move));
         sr.flipX = !facingRight;
 
-       //if (CrossPlatformInputManager.GetButtonDown("Jump"))
-       if(Input.GetButtonDown("Jump"))
+        RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 0.1f, layerMask);
+        if(raycast.collider != null)
         {
-            rb2d.AddForce(Vector2.up * jumpForce);
+            //if (CrossPlatformInputManager.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb2d.AddForce(Vector2.up * jumpForce);
+            }
         }
 
+        if(rb2d.transform.position.y < -8)
+        {
+            SceneManager.LoadScene("Level 1");
+        }
         
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            SceneManager.LoadScene("Level 1");
+        }
     }
 }
