@@ -36,7 +36,7 @@ public class Fernando: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float move = CrossPlatformInputManager.GetAxis("Horizontal");}
+        //float move = CrossPlatformInputManager.GetAxis("Horizontal");
         float move = Input.GetAxis("Horizontal");
         if (move != 0)
         {
@@ -51,8 +51,8 @@ public class Fernando: MonoBehaviour
         RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 0.1f, layerMask);
         if(raycast.collider != null)
         {
-            //if (CrossPlatformInputManager.GetButtonDown("Jump"))
-            if (Input.GetButtonDown("Jump"))
+           // if (CrossPlatformInputManager.GetButtonDown("Jump"))
+           if (Input.GetButtonDown("Jump"))
             {
                 rb2d.AddForce(Vector2.up * jumpForce);
             }
@@ -68,9 +68,15 @@ public class Fernando: MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            SceneManager.LoadScene("Level 1");
+
+            anim.SetBool("dead", true);
+
+            //Destroy(rb2d.gameObject.GetComponent<BoxCollider2D>());
+            
         }
+           
+        
     }
 }
