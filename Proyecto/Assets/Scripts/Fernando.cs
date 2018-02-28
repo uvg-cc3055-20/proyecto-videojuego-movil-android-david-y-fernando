@@ -36,31 +36,36 @@ public class Fernando: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float move = CrossPlatformInputManager.GetAxis("Horizontal");
-        float move = Input.GetAxis("Horizontal");
-        //if (move != 0)
+        if(GameController.instance.gameOver == false)
         {
-            rb2d.transform.Translate(new Vector3(1, 0, 0) * move * speed * Time.deltaTime);
-            cam.transform.position = new Vector3(rb2d.transform.position.x, cam.transform.position.y, cam.transform.position.z);
-            facingRight = move > 0;
-        }
-
-        anim.SetFloat("Speed", Mathf.Abs(move));
-        sr.flipX = !facingRight;
-
-        RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 0.1f, layerMask);
-        if(raycast.collider != null)
-        {
-           //if (CrossPlatformInputManager.GetButtonDown("Jump"))
-           if (Input.GetButtonDown("Jump"))
+            //float move = CrossPlatformInputManager.GetAxis("Horizontal");
+            float move = Input.GetAxis("Horizontal");
+            //if (move != 0)
             {
-                rb2d.AddForce(Vector2.up * jumpForce);
+                rb2d.transform.Translate(new Vector3(1, 0, 0) * move * speed * Time.deltaTime);
+                cam.transform.position = new Vector3(rb2d.transform.position.x, cam.transform.position.y, cam.transform.position.z);
+                facingRight = move > 0;
             }
-        }
 
-        if(rb2d.transform.position.y < -8)
-        {
-            SceneManager.LoadScene("Level 1");
+            anim.SetFloat("Speed", Mathf.Abs(move));
+            sr.flipX = !facingRight;
+
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                //if (CrossPlatformInputManager.GetButtonDown("Jump"))
+                RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 1f, layerMask);
+                Debug.Log(raycast.collider);
+                if (raycast.collider != null)
+                {
+                    rb2d.AddForce(Vector2.up * jumpForce);
+                }
+            }
+
+            if (rb2d.transform.position.y < -8)
+            {
+                SceneManager.LoadScene("Level 1");
+            }
         }
         
 
@@ -70,10 +75,9 @@ public class Fernando: MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
-            anim.SetBool("dead", true);
-
-            //Destroy(rb2d.gameObject.GetComponent<BoxCollider2D>());
+            GameController.instance.gameOver = true;
+            anim.SetBool("dead", GameController.instance.gameOver);
+            SceneManager.LoadScene("Level 1");
             
         }
            
