@@ -8,10 +8,9 @@ public class GameController : MonoBehaviour {
     public float score;
     public static GameController instance;
 
-    //public AudioSource musicPlayer;
     // Use this for initialization
     void Start () {
-       // musicPlayer = GetComponent<AudioSource>();
+
         gameOver = false;
         score = 0;
         instance = this;
@@ -20,7 +19,6 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //musicPlayer.Play();
 		
 	}
 }
