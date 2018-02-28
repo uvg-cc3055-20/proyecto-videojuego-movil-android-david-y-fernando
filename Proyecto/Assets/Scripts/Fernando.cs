@@ -56,7 +56,7 @@ public class Fernando : MonoBehaviour
             // Obtenemos la direccion del movimiento
 
           float move = CrossPlatformInputManager.GetAxis("Horizontal");
-          // float move = Input.GetAxis("Horizontal");
+          //float move = Input.GetAxis("Horizontal");
             if (move != 0)
             {
                 // Agregamos la fuerza al rigid body, movemos la camara y miramos hacia donde aounta el personaje
@@ -74,7 +74,7 @@ public class Fernando : MonoBehaviour
             if (CrossPlatformInputManager.GetButtonDown("Jump"))
             {
                 // Verifiamos que toque el suelo y saltamos
-                RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 1f, layerMask);
+                RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 0.5f, layerMask);
                 Debug.Log(raycast.collider);
                 if (raycast.collider != null)
                 {
@@ -146,6 +146,11 @@ public class Fernando : MonoBehaviour
         {
             PlayerPrefs.SetFloat("HighScore", GameController.instance.score);
         }
+    }
+
+    public void onClick()
+    {
+        SceneManager.LoadScene("1");
     }
 
 }
