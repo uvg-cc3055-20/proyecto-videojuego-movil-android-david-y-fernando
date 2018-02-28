@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Fernando: MonoBehaviour
+public class Fernando : MonoBehaviour
 {
 
     Rigidbody2D rb2d;
@@ -15,6 +15,7 @@ public class Fernando: MonoBehaviour
     private float jumpForce = 350f;
     private bool facingRight = true;
     Animator anim;
+    public Text score;
 
     // Parte de abajo del personaje
     public GameObject feet;
@@ -30,17 +31,17 @@ public class Fernando: MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         cam.transform.position = new Vector3(rb2d.transform.position.x, cam.transform.position.y, cam.transform.position.z);
         anim = GetComponent<Animator>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameController.instance.gameOver == false)
+        if (GameController.instance.gameOver == false)
         {
-            //float move = CrossPlatformInputManager.GetAxis("Horizontal");
-            float move = Input.GetAxis("Horizontal");
-            //if (move != 0)
+            float move = CrossPlatformInputManager.GetAxis("Horizontal");
+            //float move = Input.GetAxis("Horizontal");
+            if (move != 0)
             {
                 rb2d.transform.Translate(new Vector3(1, 0, 0) * move * speed * Time.deltaTime);
                 cam.transform.position = new Vector3(rb2d.transform.position.x, cam.transform.position.y, cam.transform.position.z);
@@ -51,9 +52,9 @@ public class Fernando: MonoBehaviour
             sr.flipX = !facingRight;
 
 
-            if (Input.GetButtonDown("Jump"))
+            //if (Input.GetButtonDown("Jump"))
+            if (CrossPlatformInputManager.GetButtonDown("Jump"))
             {
-                //if (CrossPlatformInputManager.GetButtonDown("Jump"))
                 RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 1f, layerMask);
                 Debug.Log(raycast.collider);
                 if (raycast.collider != null)
@@ -62,12 +63,20 @@ public class Fernando: MonoBehaviour
                 }
             }
 
-            if (rb2d.transform.position.y < -8)
-            {
-                SceneManager.LoadScene("Level 1");
-            }
+
         }
-        
+
+        GameController.instance.score = GameController.instance.score + 1 * Time.deltaTime;
+        score.text = GameController.instance.score.ToString();
+
+        if (rb2d.transform.position.y < -8)
+        {
+            string level = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(level);
+            GameController.instance.gameOver = true;
+            anim.SetBool("dead", GameController.instance.gameOver);
+
+        }
 
     }
 
@@ -77,10 +86,33 @@ public class Fernando: MonoBehaviour
         {
             GameController.instance.gameOver = true;
             anim.SetBool("dead", GameController.instance.gameOver);
-            SceneManager.LoadScene("Level 1");
-            
+            rb2d.AddForce(Vector2.up * 155f);
+            Destroy(rb2d.GetComponent<PolygonCollider2D>());
         }
-           
-        
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Al llegar al portal cambiamos al siguiente nivel
+        if (collision.tag == "portal")
+        {
+            // Si esta en el nivel uno, pasamos al 2
+            if (SceneManager.GetActiveScene().name == "Level 1")
+            {
+                SceneManager.LoadScene("Level 2");
+
+                // Si esta en el nivel 2, pasamos al 3
+            }
+            else if (SceneManager.GetActiveScene().name == "Level 2")
+            {
+                SceneManager.LoadScene("Level 3");
+            }
+        }
+
+        if (GameController.instance.score < PlayerPrefs.GetFloat("HighScore", 0))
+        {
+            PlayerPrefs.SetFloat("HighScore", GameController.instance.score);
+        }
+    }
+
 }
