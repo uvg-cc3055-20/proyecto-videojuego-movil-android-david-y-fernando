@@ -7256,8 +7256,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 912313507
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 79a421729c406c546820c5b21d6e2fdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15066,7 +15066,7 @@ GameObject:
   - component: {fileID: 1641096931}
   - component: {fileID: 1641096930}
   - component: {fileID: 1641096929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15130,8 +15130,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1158522515
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_MaxChunkCount: 16
@@ -23669,6 +23669,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1896706347
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399338780504482, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4f5a3ff5d1fbf934aafd0b55dec1f682, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1985375960
 GameObject:
   m_ObjectHideFlags: 0

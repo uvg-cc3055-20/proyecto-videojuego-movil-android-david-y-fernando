@@ -39,8 +39,8 @@ public class Fernando : MonoBehaviour
     {
         if (GameController.instance.gameOver == false)
         {
-           // float move = CrossPlatformInputManager.GetAxis("Horizontal");
-            float move = Input.GetAxis("Horizontal");
+           float move = CrossPlatformInputManager.GetAxis("Horizontal");
+            //float move = Input.GetAxis("Horizontal");
             if (move != 0)
             {
                 rb2d.transform.Translate(new Vector3(1, 0, 0) * move * speed * Time.deltaTime);
@@ -52,8 +52,8 @@ public class Fernando : MonoBehaviour
             sr.flipX = !facingRight;
 
 
-            if (Input.GetButtonDown("Jump"))
-            //if (CrossPlatformInputManager.GetButtonDown("Jump"))
+            //if (Input.GetButtonDown("Jump"))
+            if (CrossPlatformInputManager.GetButtonDown("Jump"))
             {
                 RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 1f, layerMask);
                 Debug.Log(raycast.collider);
@@ -75,7 +75,7 @@ public class Fernando : MonoBehaviour
             SceneManager.LoadScene(level);
             GameController.instance.gameOver = true;
             anim.SetBool("dead", GameController.instance.gameOver);
-
+            GameController.instance.score = 0;
         }
 
     }
@@ -106,6 +106,14 @@ public class Fernando : MonoBehaviour
             else if (SceneManager.GetActiveScene().name == "Level 2")
             {
                 SceneManager.LoadScene("Level 3");
+            }
+            else if (SceneManager.GetActiveScene().name == "Level 3")
+            {
+                SceneManager.LoadScene("Level 4");
+            }
+            else if (SceneManager.GetActiveScene().name == "Level 4")
+            {
+                SceneManager.LoadScene("Winer");
             }
         }
 
