@@ -1,9 +1,17 @@
-﻿using System.Collections;
+﻿// Universidad del Valle de Guatemala
+// Programacion de plataformas moviles y juegos
+// File: Enemigo.cs
+// Script para controlar al enemigo 
+// Autores: Fernando Hengstenberg 17699 y David Valenzuela 171001
+
+//Importar librerias necesarias
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemigo : MonoBehaviour {
 
+    // RigidBody
     private Rigidbody2D rb;
 
     // Parte de abajo del personaje
