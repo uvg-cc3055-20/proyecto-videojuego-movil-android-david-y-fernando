@@ -1344,7 +1344,6 @@ GameObject:
   m_PrefabInternal: {fileID: 216362885}
   serializedVersion: 5
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 724719229}
   - component: {fileID: 724719228}
   - component: {fileID: 724719227}
@@ -1354,6 +1353,7 @@ GameObject:
   m_Layer: 0
   m_Name: Enemy (4)
   m_TagString: Enemy
+<<<<<<< HEAD
 =======
   - component: {fileID: 1032027835}
   - component: {fileID: 1032027834}
@@ -1363,6 +1363,8 @@ GameObject:
   m_Name: Canvas
   m_TagString: Untagged
 >>>>>>> 82abef0f024c5b1d117d5c89e6994e9ad08f0462
+=======
+>>>>>>> parent of a15d56b... Merge branch 'master' of https://github.com/uvg-cc3055-20/proyecto-videojuego-movil-android-david-y-fernando
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1676,8 +1678,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &750976082
+<<<<<<< HEAD
 =======
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1686,6 +1688,8 @@ Transform:
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1114685124
 >>>>>>> 82abef0f024c5b1d117d5c89e6994e9ad08f0462
+=======
+>>>>>>> parent of a15d56b... Merge branch 'master' of https://github.com/uvg-cc3055-20/proyecto-videojuego-movil-android-david-y-fernando
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1766,11 +1770,11 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 805920779}
   - component: {fileID: 805920778}
   m_Layer: 0
   m_Name: Fondo1 (1)
+<<<<<<< HEAD
 =======
   - component: {fileID: 1123439877}
   - component: {fileID: 1123439881}
@@ -1946,6 +1950,8 @@ GameObject:
   m_Layer: 0
   m_Name: Fondo1 (4)
 >>>>>>> 82abef0f024c5b1d117d5c89e6994e9ad08f0462
+=======
+>>>>>>> parent of a15d56b... Merge branch 'master' of https://github.com/uvg-cc3055-20/proyecto-videojuego-movil-android-david-y-fernando
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
