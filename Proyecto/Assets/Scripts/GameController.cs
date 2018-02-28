@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public bool gameOver;
-    public float score;
+    public int score;
     public static GameController instance;
 
     // Use this for initialization
